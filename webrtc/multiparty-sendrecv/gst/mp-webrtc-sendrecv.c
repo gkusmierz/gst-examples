@@ -416,7 +416,7 @@ start_pipeline (void)
    * inside the same pipeline. We start by connecting it to a fakesink so that
    * we can preroll early. */
   pipeline = gst_parse_launch ("tee name=audiotee ! queue ! fakesink "
-      "audiotestsrc is-live=true wave=red-noise ! queue ! opusenc ! rtpopuspay ! "
+      "pulsesrc ! queue ! opusenc ! rtpopuspay ! "
       "queue ! " RTP_CAPS_OPUS (96) " ! audiotee. ", &error);
 
   if (error) {
